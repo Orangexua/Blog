@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="continer">
+        <div class="one item"></div>
+        <div class="two item"></div>
+        <div class="three item"></div>
+        <div class="four item"></div>
+        <div class="five item"></div>
+        <div class="six item"></div>
+        <div class="seven item"></div>
+        <div class="eight item"></div>
+        <div class="nine item"></div>
+        <div class="ten item"></div>
+    </div>
+</body>
+<style>
+    .continer{
+        display: grid;
+        margin: 60px;
+        /* 声明一个容器 */
+        display: grid;
+        /*  声明列的宽度  */
+        grid-template-columns: 100px 200px 1fr 2fr minmax(200px,3fr);
+        /*  声明行间距和列间距  */
+        grid-gap: 20px;
+        /*  声明行的高度  */
+        grid-template-rows: 100px 200px;
+    }
+    .one {
+  background: #19CAAD;
+}
+.two { 
+  background: #8CC7B5;
+}
+.three {
+  background: #D1BA74;
+}
+.four {
+  background: #BEE7E9;
+}
+.five {
+  background: #E6CEAC;
+}
+.six {
+  background: #ECAD9E;
+}
+.seven {
+    background: #1e2c28;
+}
+.eight {
+    background: #168838;
+}
+.nine {
+    background: #726047;
+}
+.ten {
+    background: #353692;
+}
+.item {
+  text-align: center;
+  font-size: 200%;
+  color: #fff;
+}
+</style>
+</html>
