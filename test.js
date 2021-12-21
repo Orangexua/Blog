@@ -4,6 +4,6 @@
 //     return test.map( v => ({...v}));
 // }
 // console.log(a());
-const fs = require("fs");
-const req = fs.context('./request', true, /\.js$/);
-console.log(req);
+// const fs = require("fs");
+// const req = fs.context('./request', true, /\.js$/);
+// console.log(req);
