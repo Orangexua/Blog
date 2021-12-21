@@ -5,34 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>天气API</title>
-</head>
-<body>
-<h3>天气</h3>
-<ul id="box"></ul>
-<h3>小时天气</h3>
-<ul id="hours"></ul>
-<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script>
-    $.ajax({
-        type: 'GET',
-        url: 'https://www.tianqiapi.com/api/',
-        data: 'version=v1&city=北京&appid=23035354&appsecret=8YvlPNrz',
-        dataType: 'JSON',
-        error: function () {
-            alert('网络错误');
-        },
-        success: function (res) {
-            $('#box').append('<li>City: ' + res.city + '</li>');
-            $('#box').append('<li>Weather: ' + res.data[0].wea + '</li>');
-            $('#box').append('<li>Tips: ' + res.data[0].air_tips + '</li>');
-            // 遍历数组
+    <script>
+        // function getData(item) {
+        //     // $.ajax({
+        //     //     type: 'GET',
+        //     //     url: 'https://www.tianqiapi.com/api/',
+        //     //     data: 'version=v1&city='+`${item}`+'&appid=23035354&appsecret=8YvlPNrz',
+        //     //     dataType: 'JSON',
+        //     //     error: function () {
+        //     //         alert('网络错误');
+        //     //     },
+        //     //     success: function (res) {
+        //     //         $('#box').append('<li>City: ' + res.city + '</li>');
+        //     //         $('#box').append('<li>Weather: ' + res.data[0].wea + '</li>');
+        //     //         $('#box').append('<li>Tips: ' + res.data[0].air_tips + '</li>');
+        //     //         // 遍历数组
+        //     //         for (var i = 0; i < res.data[0].hours.length; i++) {
+        //     //             $('#hours').append('<li>' + (i + 1) + ': 时间: ' + res.data[0].hours[i].hours + ' 气温: ' + res.data[0].hours[i].tem + ' </li >');
+        //     //         }
+        //     //     }
+        //     // });
+        // }
+        function success(res) {
+            var Box = document.getElementById('box');
+            var Hours = document.getElementById('hours')
+            // console.log(res);
+            // console.log(res.city);
+            Box.append('<li>City: ' + res.city + '</li>');
+            Box.append('<li>Weather: ' + res.data[0].wea + '</li>');
+            Box.append('<li>Tips: ' + res.data[0].air_tips + '</li>');
             for (var i = 0; i < res.data[0].hours.length; i++) {
-                $('#hours').append('<li>' + (i + 1) + ': 时间: ' + res.data[0].hours[i].hours + ' 气温: ' + res.data[0].hours[i].tem + ' </li >');
+                Hours.append('<li>' + (i + 1) + ': 时间: ' + res.data[0].hours[i].hours + ' 气温: ' + res.data[0].hours[i].tem + ' </li >');
             }
         }
-    });
-</script>
+        function ajaxGet(url) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.setRequestHeader("Content-type","application/json; charset=utf-8");
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    success(xhr.responseText);
+                }
+            }
+        }
+        function data(item) {
+            var url = 'https://www.tianqiapi.com/api/?'+'version=v1&city='+`${item}`+'&appid=23035354&appsecret=8YvlPNrz';
+            ajaxGet(url);
+            console.log(item);
+        }
+        function chenzixu() {
+            var val = document.getElementById('ut').value;
+            data(val);
+        }
+    </script>
+</head>
+<body>
+    <input type="text"  id="ut">
+    <button onclick="chenzixu()">输入想查询的城市</button>
+    <h3>天气</h3>
+    <ul id="box"></ul>
+    <h3>小时天气</h3>
+    <ul id="hours"></ul>
 </body>
 </html>
