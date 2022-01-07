@@ -7,26 +7,58 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="read_pro">
-        <div class="read_pro_inner"></div>
-    </div>
+    <div class="siteicon">
+		<img src="./siteicon.png" alt="">
+	</div>
+    <div class="oval"></div>
 </body>
-<style>
-.read_pro {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: #DDD;
+<style >
+@keyframes icon{
+	0%{
+		transform: translate(0,0);
+	}
+	50%{
+		transform: translate(0,30px);
+	}
+	100%{
+		transform: translate(0,0);
+	}
 }
-.read_pro_inner {
-    content: '';
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 20%;
-    background-color: #0089f2;
+@keyframes oval {
+    0%{
+		width: 100px;
+        height: 50px;
+        border-radius: 50px / 25px;
+	}
+    50%{
+        width: 70px;
+        height: 35px;
+        border-radius: 35px / 17.5px;
+    }
+	100%{
+		width: 40px;
+        height: 20px;
+        border-radius: 20px / 10px;
+	}
 }
+.siteicon{
+	width: 120px;
+	height: 120px;
+	text-align: center;
+	margin: 200px auto 0 ;
+	animation:  icon 1s linear infinite;
+}
+.oval {
+    width: 100px;
+    height:  50px;
+    margin: 20px auto 0;
+    border-radius: 50px / 25px;
+    background-color: aqua;
+    animation: oval 0.5s linear infinite alternate-reverse;
+}
+p{
+	color: #f9743a;
+}
+
 </style>
 </html>
