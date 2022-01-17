@@ -51,7 +51,7 @@ The key's randomart image is:
 复制代码
 ```
 
-- 自己的git生成ssh-key，设置路径成[id_rsa_xxx@gmail.com](https://link.juejin.cn?target=mailto%3Aid_rsa_xxx%40gmail.com)，和之前生成的那个区分开来
+- 自己的git生成ssh-key，设置路径成id_rsa_xxx@gmail.com，和之前生成的那个区分开来
 
 ```
 //输入自定义的rsa名字到自己的邮箱上去
@@ -132,18 +132,17 @@ open ~/.ssh/
 config文件内容如下:
 
 ```
-#gmail
-Host gmail.github.com
+#github
+Host Orangexua.github.com
 Hostname github.com
-IdentityFile ~/.ssh/id_rsa_xxx@gmail.com
-User gmail
-  
-#126
-Host 126.github.com
-Hostname github.com
-IdentityFile ~/.ssh/id_rsa_xxx@126.com
-User 126
-复制代码
+IdentityFile ~/.ssh/id_rsa_Orangexua
+User Orangexua
+
+#Baidu
+Host icode.baidu.com
+Hostname icode.baidu.com
+IdentityFile ~/.ssh/id_rsa_chenzixu
+User chenzixu
 ```
 
 ### 6、测试连接
@@ -162,17 +161,18 @@ Hi xxx！ You've successfully authenticated.but GitHub does not provide shell ac
 复制代码
 ```
 
-![截屏2021-11-10 19.49.24](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7afe8377eaa64b84bbb65e739c1f3a9b~tplv-k3u1fbpfcp-watermark.awebp)
+![截屏2021-11-10 19.49.24](Picture/infoflow 2022-01-17 19-50-55.png)
 
 - 测试自己的，并连接成功
 
 ```
-ssh -T git@126.gitee.com
-Hi xxx！ You've successfully authenticated.but GitHub.COM does not provide shell acess
+chenzixu@MacintoshdeMacBook-Pro .ssh % ssh -T git@github.com
+Hi Orangexua! You've successfully authenticated, but GitHub does not provide shell access.
 复制代码
 ```
 
-![截屏2021-11-10 19.48.17](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8ad53335849e4e09b69fdfdadc4fb47f~tplv-k3u1fbpfcp-watermark.awebp)
+![截屏2021-11-22 19.48.17](../Picture/pic1.png)
+![截屏2021-11-22 19.48.17](../Picture/pic2.png)
 
 到这一步为止，基本上后面能欢快的玩耍了
 
