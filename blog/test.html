@@ -1,0 +1,46 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id = 'ha' style=" width: 100px ;height: 100px; padding: 10px; border: solid 1px #aaa; margin: 10px ; box-sizing: border-box"></div>
+</body>
+<script>
+  var a = document.getElementById('ha').offsetWidth;
+  console.log(a);
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrap">
+    <div class="inner"></div>
+  </div>
+  <script>
+    let line=2; num=2;
+    for(let i=0;i<line;i++){
+      let str = readline().split(" ");
+      for(let j=0;j<num;j++){//hang
+        let arr=[];
+        for(let x=0;x<num;x++){//lie
+          for(let n=0;n<str.length;n++){
+            arr.push(str[x]);
+          }
+        }
+        console.log(arr);
+      }
+    }
+  </script>
+</body>
+</html>
