@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var myImage = (function(){ 
+    var imgNode = document.createElement( 'img' ); 
+    document.body.appendChild( imgNode ); 
+      return { 
+        setSrc: function( src ){ 
+          imgNode.src = src; 
+        } 
+      } 
+    }
+  )();
+
+  var proxyImage = (function(){ 
+    var img = new Image;
+    img.onload = function(){
+      console.log(this.src)
+      myImage.setSrc( this.src ); 
+    } 
+    return { 
+      setSrc: function( src ){ 
+        myImage.setSrc( '	https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/dcec27cc6ece0eb5bb217e62e6bec104.svg' );
+        setTimeout(() => {
+          img.src = src;
+        }, 1000);
+      } 
+    } 
+  })(); 
+  proxyImage.setSrc( 'https://www.baidu.com/img/flexible/logo/pc/result@2.png' ); 
+</script>
+</html>

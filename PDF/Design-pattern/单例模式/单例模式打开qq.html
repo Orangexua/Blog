@@ -1,0 +1,78 @@
+<html> 
+ <body> 
+ <button id="loginBtn">登录</button> 
+ </body> 
+<script>
+  // 惰性模式
+  // 单例模式的定义是：保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+  // var createLoginLayer = function(){ 
+  //   var div = document.createElement( 'div' ); 
+  //   div.innerHTML = '我是登录浮窗'; 
+  //   div.style.display = 'none'; 
+  //   document.body.appendChild( div ); 
+  //   return div;
+  // }; 
+
+  // 惰性单例模式
+  var createLoginLayer = (function(){
+    var div;
+    return function () {
+      if ( !div ) {
+        div = document.createElement( 'div' ); 
+        div.innerHTML = '我是登录浮窗'; 
+        div.style.display = 'none'; 
+        document.body.appendChild( div ); 
+      }
+      return div;
+    }
+  })();
+
+  var createLoginLayer = (function(){ 
+    var div; 
+    return function(){ 
+      if ( !div ){ 
+        div = document.createElement( 'div' ); 
+        div.innerHTML = '我是登录浮窗'; 
+        div.style.display = 'none'; 
+        document.body.appendChild( div ); 
+      } 
+      return div; 
+    }
+  })(); 
+  document.getElementById( 'loginBtn' ).onclick = function(){ 
+    var loginLayer = createLoginLayer(); 
+    loginLayer.style.display = 'block'; 
+  };
+  // 通用的单例模式
+
+  var getSingle = function( fn ){ 
+  var result; 
+  return function(){ 
+    return result || ( result = fn .apply(this, arguments ) ); 
+    }
+  };
+  //创建登录框
+  var createLoginLayer = function(){ 
+    var div = document.createElement( 'div' ); 
+    div.innerHTML = '我是登录浮窗'; 
+    div.style.display = 'none'; 
+    document.body.appendChild( div ); 
+    return div; 
+  };
+  // 创建iframe
+  var createSingleIframe = getSingle( function(){ 
+  var iframe = document.createElement ( 'iframe' ); 
+    document.body.appendChild( iframe ); 
+    return iframe; 
+  }); 
+  document.getElementById( 'loginBtn' ).onclick = function(){ 
+    var loginLayer = createSingleIframe(); 
+    loginLayer.src = 'http://baidu.com'; 
+  };
+  var createSingleLoginLayer = getSingle( createLoginLayer ); 
+  document.getElementById( 'loginBtn' ).onclick = function(){ 
+    var loginLayer = createSingleLoginLayer(); 
+    loginLayer.style.display = 'block'; 
+  };
+</script> 
+</html> 

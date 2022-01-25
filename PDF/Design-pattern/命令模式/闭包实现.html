@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="button3">点我呀死鬼</button>
+</body>
+<script>
+  var setCommand = function ( button , func) {
+    button.onclick = function () {
+      return func();
+    }
+  }
+
+  var MenuBar = {
+    refresh : function () {
+      console.log('就点你咋了')
+    }
+  }
+
+  var ReceiveMenuBarCommand = function ( receive ) {
+    return function () {
+      receive.refresh()
+    }
+  }
+
+  var RefreshMenuBarCommand = ReceiveMenuBarCommand(MenuBar);
+  var button1 = document.getElementById('button3')
+  setCommand(button1 , RefreshMenuBarCommand)
+</script>
+</html>
